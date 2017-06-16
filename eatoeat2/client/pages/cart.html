@@ -1,0 +1,158 @@
+<div class="common-header" ng-controller="user_register">
+
+
+	<div class="container">
+		
+		<!--<a  class="logo" ng-click="listing_redirect()" style="cursor: pointer"><img src="{{home_page_data_view.website_logo}}"></a>-->
+		<a ng-include="'pages/inc/logo.html'" class="logo"></a>
+
+
+
+		<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+	</div>
+
+	<div class="bread_ui">
+
+		<div class="container" ng-init="loc_val_cookies()">
+			<ul class="breadcrumbs">
+				<li class="list"><a href="#0" class="link">Home</a></li>
+				<li class="list"><a  class="link">{{loc_show}}</a></li>
+				<li class="list">Cart</li>
+
+			</ul>
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+<div ng-include="'pages/popup/select-user.html'" ng-show="ask_user_type_show"></div>
+<div class="container" ng-controller="user_register">
+	<div class="cart-page w-shadow">
+
+		<!-- activity cart show start here-->
+		<div class="cart-activity">
+			<span class="thumb"><img src="public/images/icon/cart-icon.png"></span>
+			<p class="display">We have found in your cart <span class="number">( {{manage_cart_total.total_item}} Items )</span></p>
+		</div>
+		<!-- activity cart show end here-->
+
+		<div class="cart-management">
+
+			<div class="left-panel" ng-init="fetch_delivery_charge()">
+				<ul class="cart-tiles">
+					<li class="list main-name">
+						<div class="coloum-div col-px-100 center"><span class="title">Image</span></div>
+						<div class="coloum-div"><span class="title">Item Details </span></div>
+						<div class="coloum-div col-px-65 center"><span class="title">Type</span></div>
+						<div class="coloum-div col-px-100 center"><span class="title">Quantity</span></div>
+						<div class="coloum-div col-px-200"><span class="title">Price</span></div>
+						<div class="coloum-div col-px-100"><span class="title">Subtotal</span></div>
+						<div class="coloum-div col-px-100 center"><span class="title">Remove</span></div>
+					</li>
+					<li class="list" ng-repeat="item in view_cart_val">
+						<div class="coloum-div col-px-100 center"><span class="pro-thumb" ng-if="item.food_img!=''"><img ng-src="{{item.food_img[0].food_img_web}}" class="properproduct" style="  background-size: 100% auto;"></span>
+<span class="pro-thumb" ng-if="item.food_img==''"><img src="public/images/logo.png" class="properproduct" style="  background-size: 100% auto;"></span>
+</div>
+<div class="coloum-div">
+	<div class="product-details">
+		<a href="#0" class="link">{{item.food_name}}</a>
+		<div class="cuisines">
+			<span class="subtext">Cuisines :</span>
+			<ul class="cuisine-list">
+				<div ng-repeat="cuisine in item.food_cuisine" ng-if="cuisine.status=='true'">
+					<li class="list">
+
+						{{cuisine.category_name}}
+					</li>
+				</div>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="coloum-div col-px-65 center">
+
+	<div ng-if="item.food_type=='Vegetarian'">
+		<span class="title"><img src="public/images/icon/veg.jpg"></span>
+	</div>
+
+	<div ng-if="item.food_type=='Non Vegetarian'">
+		<span class="title"><img src="public/images/icon/non-veg.jpg"></span>
+	</div>
+
+</div>
+
+
+
+
+<div class="coloum-div col-px-100 center">
+	<div class="qty-controller">
+		<span class="button" ng-click="decreaseItemCount_for_cart_page(item)">-</span>
+		<span class="qty-show" id="food_qty">{{item.food_qty}}</span>
+		<span class="button" ng-click="increaseItemCount_for_cart_page(item)">+</span>
+	</div>
+</div>
+
+<div class="coloum-div col-px-200">
+	<span class="title price"> Rs. {{item.food_price}} </span>
+	<!-- 
+							<span class="selling-price">Selling Price: Rs. 599</span> -->
+	<span class="offer-saving">Delivery Charge : Rs. {{delivery_charge_amt}}</span>
+</div>
+<div class="coloum-div col-px-100"><span class="title price">Rs. {{item.food_total_price}}</span></div>
+<div class="coloum-div col-px-100">
+	<span class="remove-btn" ng-click="remove_item_from_cart(item.food_id,item.order_id)"><img src="public/images/icon/remove.png"></span>
+</div>
+</li>
+
+</ul>
+</div>
+
+<div class="right-panel">
+	<div class="your-order-cart">
+		<h3 class="head" ng-click="place_order()">Your Order</h3>
+		<ul class="data-list">
+			<li class="list"><span class="title">Total Items</span><span class="data"> {{manage_cart_total.total_item}} </span></li>
+			<li class="list"><span class="title">Price</span><span class="data">Rs. {{manage_cart_total.total_price}}.00</span></li>
+			<li class="list"><span class="title">Delivery Charge</span><span class="data">Rs. {{delivery_charge}}.00</span></li>
+		</ul>
+		<div class="grand-total">
+			<span class="title">Total Amount</span><span class="data">Rs.{{manage_cart_total.total_price_final}}.00</span>
+		</div>
+		<div class="action-buttons">
+			<span class="continue"><a href="#/listing" class="link">Continue Shop</a></span>
+			<span class="order"><a href="#/checkout" class="link" ng-click="place_order()">Place Order</a></span>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+<div ng-include="'pages/inc/footer.html'"></div>
+
+<script type="text/javascript">
+	$(".properproduct").load(function () {
+		if ($(this).height() > 50) {
+
+			$(this).addClass("if-bigimg");
+		}
+		else {
+			// $(this).addClass( "if-smallimg" );
+		}
+
+	});
+
+
+</script>

@@ -1,0 +1,79 @@
+<div ng-controller="user_register" >
+
+<div ng-include="'pages/inc/header.html'" class="common-header"></div>
+
+<div class="container">
+	<div class="user-join-page w-shadow">
+		<div class="form-display">
+			<h2 class="page-name">User Account
+			<p class="caption">We will send you a link to reset your Mobile No. Enter Contact No.</p>
+			</h2>
+			<div class="activity">
+				<ul class="buttons">
+					<li class="list active"><a href="#/user_login" class="link">Login</a></li>
+					<li class="list"><a href="#/user_create" class="link">Sign up</a></li>
+				</ul>
+
+				<!--<p class="caption">Enter your email and password to <b>get your password</b></p>
+					<p ng-show="after_forget_mail_send" style="font-size:12px;color:green"><b>Email Has Been Sent. Check your Mail.</b></p>
+						<p ng-show="after_forget_mail_failed" style="font-size:12px;color:red"><b>Email is Not Registered With Us.!</b></p>-->
+		
+				<div class="form-field">
+					<div class="field-fillup">
+						<label class="label required">Contact No.</label>
+						<input type="text" name="" id="mobile_no" class="input-box" placeholder="Your Contact No." ng-model="forget_user_detail.user_contact_no">
+					</div>
+				</div>
+
+				<div class="switch-btn">
+					<div class="list padding-20px"><input type="submit" name="" class="submit-btn" value="Get My Password" ng-click="forget_user_password(forget_user_detail)"></div>
+				</div>
+
+				<!--<div class="external-button">
+					<a href="#0" class="facebook"><span class="icon"><i class="fa fa-facebook"></i></span>Sign in with <b>Facebook</b></a>
+					<a href="#0" class="google"><span class="icon"><i class="fa fa-google-plus"></i></span>Sign in with <b>Google +</b></a>
+				</div>-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'pages/inc/footer.html'"></div>
+
+</div>
+
+<div class="otp-popup" ng-controller="user_register">
+    <div class="design-box">
+        <span class="close-popup" ><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+            <h4 class="title">Verify OTP</h4>
+            <span class="caption">Enter Your 6 Digit One Time Password</span>
+
+            <div class="input-div margin-top-30px">
+                <input type="text" name="" class="input-box" placeholder="Enter OTP" ng-model="user_reg_otp.otp">
+            </div>
+			<div class="revert-msg" ng-show="resend_otp">
+                <span class="error" style="color: green" >OTP Successfully Resend</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+			 <div class="revert-msg" ng-show="empty_otp">
+                <span class="error" >Couldn't Be Empty.</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+            <div class="revert-msg" ng-show="incorr_otp">
+                <span class="error" >Incorrect OTP.</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+            <ul class="buttons">
+                <li class="list"><span class="resend" ng-click="resend_user_otp()">Resend OTP</span></li>
+                <li class="list"><input type="submit" name="" class="submit-btn" value="OK" ng-click="verify_user_otp_forget_pass(user_reg_otp)"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>	
+$(".close-popup").click(function(){
+    $(".otp-popup").hide();
+});
+</script>

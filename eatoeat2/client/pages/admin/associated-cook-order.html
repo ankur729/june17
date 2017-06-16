@@ -1,0 +1,150 @@
+
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container" ng-init="associated_cook_order_fetch()">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Cook Order</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list">Cook Info</li>
+						<li class="list">Cook Order</li>
+					</ul>
+
+					<ul class="link-icon">
+						<li class="list"><div class="white-btn" ng-click="associated_cook_order_fetch()" style="cursor: pointer"><i class="fa fa-refresh" aria-hidden="true"></i></div></li>
+					</ul>
+				</div>
+				
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">(Cook Name) Order List
+						<!-- <div class="right col-px-200">
+							<select class="select-option">
+								<option>Status</option>
+								<option>Enable</option>
+								<option>Disable</option>
+							</select>
+						</div> -->
+					</h3>
+
+					<div class="search-model">
+						<div class="search-div">
+							<label class="search-name">Order ID</label>
+							<input type="text" name="" class="input-box" placeholder="Order ID">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Order Status</label>
+							<select class="select-option left">
+								<option>Order Complete</option>
+								<option>Open Order</option>
+								<option>Order Cancelled </option>
+							</select>
+						</div>
+						
+						<div class="search-div">
+							<label class="search-name">Payment Mode</label>
+							<select class="select-option left">
+								<option>Select</option>
+								<option>Wallet</option>
+								<option>Online</option>
+							</select>
+						</div>
+						<div class="search-div">
+							<label class="search-name">Order Date</label>
+							<input type="text" name="" class="input-box"  placeholder="Order Date">
+						</div>
+					
+					</div>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+						
+							<div class="coloum-div col-px-150">
+								<span class="title">Order ID</span>
+							</div>
+							<div class="coloum-div">
+								<span class="title">Order Status</span>
+							</div>
+							<div class="coloum-div col-px-200">
+								<span class="title">Delivery Boy</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Total</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Payment Mode</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Order Date</span>
+							</div><!-- 
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Date Modified</span>
+							</div> -->
+							<div class="coloum-div col-px-100 center">
+								<span class="title">View</span>
+							</div>
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						<li class="list" ng-repeat="cook in view_associated_cook_order">
+							
+							<div class="coloum-div col-px-150">
+								<span class="title">{{cook.order_id}}</span>
+							</div>
+							<div class="coloum-div">
+
+								<div ng-if="cook.order_status=='pending'">
+									<span class="title">Open Order</span>
+
+								</div>
+								
+							</div>
+							<div class="coloum-div col-px-200">
+								<span class="title">Delivery Boy Name</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Rs. {{cook.order_data.food_total_price}}/- </span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Wallet</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{cook.date}}</span>
+							</div><!-- 
+							<div class="coloum-div col-px-100 center">
+								<span class="title">24/8/2016</span>
+							</div> -->
+							<div class="coloum-div col-px-100 center">
+								<a href="#/admin/cook-order-detail" class="view-btn" title="view"><i class="fa fa-eye"></i></a>
+							</div>
+						</li>
+					
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

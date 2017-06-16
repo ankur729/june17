@@ -1,0 +1,20 @@
+<div class="container" ng-controller="cook_register">
+	<div class="cook-panel-head" ng-init="get_breadcrumb_name()">
+	<h4 class="cook-name">Hi, {{cook_name_breadcrumb}}</h4>
+	
+	<div class="status" style="margin-left: 25px;color:white" ng-init="check_activation_status()">
+		<span >{{is_cook_active}}</span> 
+		<!--<span ng-if="vv=='Pending For Approval'">Un-Approved</span> 
+		<span ng-if="vv=='new'">Un-Approved</span>-->
+	</div>
+
+	<div class="status"  ng-init="check_activation_status()">
+		
+		<span ng-if="vv=='Approved'">Approved</span> 
+		<span ng-if="vv=='Pending For Approval'">Un-Approved</span> 
+		<span ng-if="vv=='updated'">Un-Approved (Update Data)</span>
+		<span ng-if="vv=='new'">Un-Approved</span>
+	</div>
+	</div>
+
+</div>

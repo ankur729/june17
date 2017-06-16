@@ -1,0 +1,290 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container" ng-init="view_user_details_admin_fetch()">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>	
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Delivery Boy Order Details</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list"><a href="#0" class="link">Cook Order</a></li>
+						<li class="list">Delivery Boy Order Details</li>
+					</ul>
+
+					<ul class="link-icon">
+						
+						
+						<li class="list">
+							<a href="#/admin/view-delivery-boy-orders" class="white-btn"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<!-- table view start here -->
+				<div class="table-view">
+					<h3 class="head-name">Delivery Boy Order Details</h3>	
+					
+					<div class="order-detail-page">
+						<ul class="order-listing">
+							<li class="list">
+								<div class="order-base">
+									<div class="mini-size">
+										<span class="label"> Order placed </span>
+										<span class="value"> 21 June 2016 </span>
+									</div>
+									<div class="mini-size">
+										<span class="label">  Total </span>
+										<span class="value"> Rs. 100.00 </span>
+									</div>
+									<div class="mini-size">
+										<span class="label">  Ship To </span>
+										<a href="#0" class="trigger">Vinay Sudan <!-- <i class="fa fa-caret-down"></i> --></a>
+									</div>
+									<div class="mini-size">
+										<span class="label">Delivery By</span>
+										<span class="value">Service Center (New Delhi Center)</span>
+									</div>
+									<div class="mini-size">
+										<span class="label">Cook</span>
+										<span class="value">Cook Name</span>
+									</div>
+									<a href="#0" class="order-number">OD304061523264047000</a>
+								</div>
+
+								<div class="order-repeat">
+									<div class="ordered-product-details">
+										<span class="pro-thumb"><img src="images/product/1.jpg" class="properproduct"></span>
+										<div class="product-details">
+											<a href="#0" class="link">Lotto Runlite Purple Sports Shoes</a>
+											<div class="cuisines">
+												<span class="subtext">Cuisines :</span>
+												<ul class="cuisine-list">
+												<li class="list ng-binding">punjabi</li>
+												</ul>
+											</div>
+										</div>
+										<!-- <a href="" class="add-review-btn right margin-left-10px">Add Review</a> -->
+										<span class="food-type"><img src="images/icon/veg.jpg"></span>
+									</div>
+
+									<ul class="order-status">
+										<li class="list">
+											<div class="table-row single">
+												<p class="data">Current Status</p>
+											</div>
+										</li>
+										<li class="list">
+											<div class="table-row double"><p class="data">Delivery day : <span class="get">2 NOV 2016</span></p></div>
+											<div class="table-row double"><p class="data">Delivery Fee :  <span class="get">Rs. 20</span></p></div>
+										</li>
+										<li class="list">
+											<div class="table-row double"><p class="data">Delivery time : <span class="get"> 2 PM</span></p></div>
+											<div class="table-row double"><p class="data">Payment Mode :  <span class="get">Online</span></p></div>
+										</li>
+										<li class="list">
+											<div class="table-row double">
+												<p class="data">Rs. 150 &nbsp; | &nbsp; <span class="get">5 qty </span></p>
+											</div>
+											<div class="table-row double">
+												<p class="data"><a href="#0" class="cancel-btn">Cancel</a></p>
+											</div>
+										</li>
+									</ul>
+
+									<div class="row padding-20px">
+										<div class="row">
+						                    <div class="col-md-25 left">
+						                        <select class="select-option" name="order_status">
+						                            <option>Select Status</option>
+						                            <option>confirmed</option>
+						                            <option>ready for delivery</option>
+						                            <option>delivered</option>
+						                        </select>
+						                    </div>
+						                    <div class="col-md-75 left">
+						                        <input name="order_product_id" value="252" type="hidden">
+						                        <div class="col-md-75 left"><input name="comment" placeholder="comment" class="input-box" required="" type="text"></div>
+						                        <div class="col-md-25 left"><input class="submit-btn row" value="submit" type="submit"></div>
+						                    </div>
+					                    </div>
+					                    <ul class="delivery-trackable">
+					                    	<li class="list main">
+					                    		<span class="label">Status</span>
+					                    		<div class="data">
+					                    			<span class="date">Date</span>
+					                    			<span class="time">/ Time</span>
+					                    		</div>
+					                    		<p class="comment">Comment</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">Order confirmed</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">ready for delivery</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">delivered</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    </ul>
+					                </div>
+
+									<div class="total-details">
+										<div class="address">
+											<b class="title">Delivery Address:</b>
+											k-368 jahangir puri delhi 110033, near hanuman mandir,
+											New Delhi - 110033, Delhi
+										</div>
+										<div class="order-total">
+											<span class="label">Order Total:</span>
+											<span class="amount">Rs.120</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="order-repeat">
+									<div class="ordered-product-details">
+										<span class="pro-thumb"><img src="images/product/1.jpg" class="properproduct"></span>
+										<div class="product-details">
+											<a href="#0" class="link">Lotto Runlite Purple Sports Shoes</a>
+											<div class="cuisines">
+												<span class="subtext">Cuisines :</span>
+												<ul class="cuisine-list">
+												<li class="list ng-binding">punjabi</li>
+												</ul>
+											</div>
+										</div>
+										<!-- <a href="" class="add-review-btn right margin-left-10px">Add Review</a> -->
+										<span class="food-type"><img src="images/icon/veg.jpg"></span>
+									</div>
+
+									<ul class="order-status">
+										<li class="list">
+											<div class="table-row single">
+												<p class="data">Delivered</p>
+											</div>
+										</li>
+										<li class="list">
+											<div class="table-row double"><p class="data">Delivery day : <span class="get">2 NOV 2016</span></p></div>
+											<div class="table-row double"><p class="data">Delivery Fee :  <span class="get">Rs. 20</span></p></div>
+										</li>
+										<li class="list">
+											<div class="table-row double"><p class="data">Delivery time : <span class="get"> 2 PM</span></p></div>
+											<div class="table-row double"><p class="data">Payment Mode :  <span class="get">Online</span></p></div>
+										</li>
+										<li class="list">
+											<div class="table-row double">
+												<p class="data">Rs. 150 &nbsp; | &nbsp; <span class="get">5 qty </span></p>
+											</div>
+											<div class="table-row double"><!-- 
+												<p class="data"><a href="#0" class="cancel-btn">Cancel</a></p> -->
+											</div>
+										</li>
+									</ul>
+
+									<div class="row padding-20px">
+									
+					                    <ul class="delivery-trackable">
+					                    	<li class="list main">
+					                    		<span class="label">Status</span>
+					                    		<div class="data">
+					                    			<span class="date">Date</span>
+					                    			<span class="time">/ Time</span>
+					                    		</div>
+					                    		<p class="comment">Comment</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">Order confirmed</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">ready for delivery</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">delivered</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    </ul>
+					                </div>
+
+									<div class="total-details">
+										<div class="address">
+											<b class="title">Delivery Address:</b>
+											k-368 jahangir puri delhi 110033, near hanuman mandir,
+											New Delhi - 110033, Delhi
+										</div>
+										<div class="order-total">
+											<span class="label">Order Total:</span>
+											<span class="amount">Rs.120</span>
+										</div>
+									</div>
+								</div>
+
+							
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<!-- table view end here -->
+
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- main container end herer -->
+<script src="plugin/tabs/js/sea.tabs.js"></script>
+
+<script type="text/javascript">
+	
+$(".left-pannel .main-list").click(function(){
+	$(this).children(".nav-fly").slideToggle(200);
+	$(this).nextAll(".main-list").children(".nav-fly").slideUp(1000);
+	$(this).prevAll(".main-list").children(".nav-fly").slideUp(1000);
+});
+</script>

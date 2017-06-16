@@ -1,0 +1,161 @@
+
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel" ng-init="view_user_details_admin_fetch()">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Customers Order</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list">Customers Info</li>
+						<li class="list">Customers Order</li>
+					</ul>
+
+					<ul class="link-icon">
+						<li class="list"><a href="#0" class="white-btn"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">({{user_view_full.username}}) Order List
+						<!-- <div class="right col-px-200">
+							<select class="select-option">
+								<option>Status</option>
+								<option>Enable</option>
+								<option>Disable</option>
+							</select>
+						</div> -->
+					</h3>
+
+					<div class="search-model">
+						<div class="search-div">
+							<label class="search-name">Order ID</label>
+							<input type="text" name="" class="input-box" placeholder="Order ID">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Delivery By</label>
+							<select class="select-option left">
+								<option>Select By</option>
+								<option>Service Center</option>
+								<option>Cook</option>
+								<option>Servicer Center and Cook</option>
+							</select>
+						</div>
+						<div class="search-div">
+							<label class="search-name">Order Status</label>
+							<select class="select-option left">
+								<option>Order Complete</option>
+								<option>Open Order</option>
+								<option>Order Cancelled </option>
+							</select>
+						</div>
+
+						<div class="search-div">
+							<label class="search-name">Payment Mode</label>
+							<select class="select-option left">
+								<option>Select</option>
+								<option>Wallet</option>
+								<option>Online</option>
+							</select>
+						</div>
+						<div class="search-div">
+							<label class="search-name">Order Date</label>
+							<input type="text" name="" class="input-box"  placeholder="Order Date">
+						</div>
+						<button class="search-btn right">Filter</button>
+					</div>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div col-px-50 center">
+								<input type="checkbox" name="" class="check-all-btn">
+							</div>
+							<div class="coloum-div col-px-150">
+								<span class="title">Order ID</span>
+							</div>
+							<div class="coloum-div col-px-150">
+								<span class="title">Delivery By</span>
+							</div>
+							<div class="coloum-div">
+								<span class="title">Order Status</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Total</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Payment Mode</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Order Date</span>
+							</div><!-- 
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Date Modified</span>
+							</div> -->
+							<div class="coloum-div col-px-100 center">
+								<span class="title">View</span>
+							</div>
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						<li class="list" ng-repeat="user in user_view_full.orders">
+							<div class="coloum-div col-px-50 center">
+								<input type="checkbox" name="" class="check-btn">
+							</div>
+							<div class="coloum-div col-px-150">
+								<span class="title">{{user.order_id}}</span>
+							</div>
+							<div class="coloum-div col-px-150">
+								<span class="title">Service Center & Cook</span>
+							</div>
+							<div class="coloum-div">
+
+								<div ng-if="user.order_status=='pending'">
+										<span class="title">Open Order</span>
+
+								</div>
+							
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">Rs. {{user.items[0].grand_total}}/- </span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Wallet</span>
+							</div>
+							<div class="coloum-div col-px-100 center">
+								<span class="title">{{user.date}}</span>
+							</div><!-- 
+							<div class="coloum-div col-px-100 center">
+								<span class="title">24/8/2016</span>
+							</div> -->
+							<div class="coloum-div col-px-100 center">
+								<a href="#/admin/user-order-detail" class="view-btn" title="view" ng-click="fetch_user_order_detail_by_id_temp(user.order_id)"><i class="fa fa-eye"></i></a>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

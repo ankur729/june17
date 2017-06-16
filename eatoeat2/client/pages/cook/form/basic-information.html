@@ -1,0 +1,246 @@
+<div  ng-controller="cook_register">
+
+<div class="form-layout" ng-show="show_basic" ng-init="fill_temp_cook_data()" >
+
+
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label" >Name </span>
+		
+		<div class="input-div"><input type="text" name="" tabindex="1"  placeholder="User Name" class="input-box" ng-model="cook_complete_details.cook_name" ng-readonly="true" ></div>
+		
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Email</span>
+		<div class="input-div"><input type="text" name="" tabindex="2"  placeholder="Email" class="input-box" ng-model="cook_complete_details.cook_email"></div>
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Phone</span>
+		<div class="input-div"><input type="text" id="mobile_no" name=""   placeholder="Phone number"  tabindex="3"  class="input-box" ng-model="cook_complete_details.cook_contact" ></div>
+	</div>
+	
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Gender</span>
+		<div class="input-div">
+			<input id="check1" name="check" tabindex="4"  value="Male" class="fancy-radio" type="radio" ng-model="cook_complete_details.gender">
+			<label for="check1" class="fancy-radio-label">Male</label>
+
+			<input id="check2" name="check2" tabindex="5" value="Female" class="fancy-radio" type="radio" ng-model="cook_complete_details.gender">
+			<label for="check2" class="fancy-radio-label"> Female </label>
+		</div>
+		
+	</div>
+
+		<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Address</span>
+			<div class="input-div"><input type="text"  name="" placeholder="Address" tabindex="6"  class="input-box" ng-model="cook_complete_details.street_address"></div>
+			<button style="display: none" ng-click="selected_location_cook_basic_info()" class="location_btn"></button>
+		</div>
+	<!--<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Building No.</span>
+		<div class="input-div"><input type="text" name="" tabindex="7"  placeholder="Flat/House No. Colony/Street No." class="input-box" ng-model="cook_complete_details.building_no"></div>
+	</div>-->
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Landmark</span>
+		<div class="input-div"><input type="text" name="" tabindex="8" id="autocomplete_addr" placeholder="Your Near Landmark" class="input-box" ng-model="cook_complete_details.landmark"></div>
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">City</span>
+		<div class="input-div"><input type="text" name="" tabindex="9" placeholder="Enter City" class="input-box" ng-model="cook_complete_details.city" ng-readonly="true"></div>
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px" >
+		<span class="label">State</span>
+				<div class="input-div"><input type="text" name="" tabindex="9" placeholder="Enter City" class="input-box" ng-model="cook_complete_details.state" ng-readonly="true"></div>
+		<!--<select class="select-option" ng-model="cook_complete_details.state" >
+			<option value="">-Select State-</option>
+			<option value="New Delhi">New Delhi</option>
+			<option value="Delhi/Ncr">Delhi/Ncr</option>
+		</select>-->
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px" tabindex="10">
+		<span class="label">Pincode</span>
+		<div class="input-div"><input type="text" name="" id="basic_pincode" placeholder="Enter 6 Digit Pincode" class="input-box" ng-model="cook_complete_details.pincode" ng-blur="basic_profile_validate('pincode')"></div>
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Latitude</span>
+		<div class="input-div"><input type="text" name="" placeholder="Latitude" class="input-box" ng-model="cook_complete_details.latitude" ng-readonly="true"></div>
+	</div>
+	<div class="list field-fillup col-md-50 padding-left-right-10px">
+		<span class="label">Longitude</span>
+		<div class="input-div"><input type="text" name="" placeholder="Longitude" class="input-box" ng-model="cook_complete_details.longitude" ng-readonly="true"></div>
+	</div>
+	<div class="row field-fillup"><div class="submit-btn"  ng-click="form_section()">Next</div></div>
+</div>
+
+
+
+
+<div class="form-layout" ng-show="show_company">
+
+	<div class="row">
+		<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Brand name</span>
+			<div class="input-div"><input type="text" name="" placeholder="Enter Your Brand Name" class="input-box" ng-model="cook_complete_details.cook_company_name"></div>
+		</div>
+	
+
+		
+			 <div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Bank Account Type</span>
+
+					<select class="select-option" ng-model="cook_complete_details.bank_type">
+			       			<option value="">--Select bank Acc Type--</option>
+			       			<option value="Saving Account">Saving Account</option>
+							   <option value="Current Account">Current Account</option>
+			       		</select>
+			
+			</div>
+				</div>
+
+				<div class="row">
+						<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Name On Bank Account</span>
+			<div class="input-div"><input type="text" name="" placeholder="Enter Name On Bank Acc" class="input-box" ng-model="cook_complete_details.cook_name_on_bank_acc"></div>
+		</div>
+
+
+					<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Branch Name</span>
+			<div class="input-div"><input type="text" name="" placeholder="Enter Your Brand Name" class="input-box" ng-model="cook_complete_details.branch_name"></div>
+		</div>
+
+				</div>
+	<div class="row">
+		
+		<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Bank Name</span>
+				<select class="select-option" ng-model="cook_complete_details.bank_name">
+			       			<option value="">--Select bank Name--</option>
+			       			<option value="Allahabad Bank">Allahabad Bank</option>
+							<option value="Andhra Bank">Andhra Bank</option>
+							<option value="Bank of India">Bank of India </option>
+							<option value="Bank of Baroda">Bank of Baroda </option>
+							<option value="Bank of Maharashtra">Bank of Maharashtra </option>
+							<option value="Canara Bank">Canara Bank </option>
+							<option value="Central Bank of India">Central Bank of India </option>
+						
+							<option value="Indian Bank">Indian Bank </option>
+							<option value="ICICI Bank">ICICI Bank </option>
+							<option value="Indian Overseas Bank">Indian Overseas Bank </option>
+							<option value="Oriental Bank of Commerce">Oriental Bank of Commerce </option>
+							<option value="Punjab and Sindh Bank">Punjab and Sindh Bank </option>
+							<option value="Punjab National Bank">Punjab National Bank </option>
+							<option value="Syndicate Bank">Syndicate Bank </option>
+							<option value="State Bank of India">State Bank of India </option>
+							<option value="UCO Bank">UCO Bank </option>
+							<option value="Union Bank of India">Union Bank of India </option>
+							<option value="United Bank of India">United Bank of India </option>
+							<option value="Vijaya Bank">Vijaya Bank </option>
+
+			       		</select>
+		</div>
+
+		<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Bank Account number</span>
+			<div class="input-div"><input type="text" name="" placeholder="Bank account number" class="input-box" ng-model="cook_complete_details.bank_account_no"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">IFSC Code</span>
+			<div class="input-div"><input type="text" name="" id="basic_ifsc" placeholder="Please enter ifsc code " class="input-box" ng-model="cook_complete_details.bank_ifsc" ng-blur="basic_profile_validate('ifsc')"></div>
+		</div>
+		<!--<div class="list field-fillup col-md-50 padding-left-right-10px">
+			<span class="label">Check</span>
+			<div class="input-div">
+				<input id="check3" name="check" value="check3" class="fancy-checkbox" type="checkbox">
+		        <label for="check3" class="fancy-checkbox-label">Please check if don’t know IFSC</label>
+	        </div>
+		</div>-->
+	</div>
+
+
+
+	<div class="row field-fillup">
+		<p class="imp-note"><span class="title">Please note:</span> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+	</div>
+	<div class="row field-fillup">
+		<div ng-click="form_section_back_button()" class="back-btn" style="cursor: pointer"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</div>
+		<div class="submit-btn"  ng-click="cook_profile_complete(cook_complete_details)">SAVE</div></div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+<div class="otp-popup" ng-controller="cook_register">
+    <div class="design-box">
+        <span class="close-popup" ><i class="fa fa-close"></i></span>
+        <div class="display-setting">
+            <h4 class="title">Verify OTP</h4>
+            <span class="caption">Enter Your 6 Digit One Time Password</span>
+
+            <div class="input-div margin-top-30px">
+                <input type="text" name="" class="input-box" placeholder="Enter OTP" ng-model="cook_reg_otp.otp">
+            </div>
+			<div class="revert-msg" ng-show="resend_otp">
+                <span class="error" style="color: green" >OTP Successfully Resend</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+			 <div class="revert-msg" ng-show="empty_otp">
+                <span class="error" >Couldn't Be Empty.</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+            <div class="revert-msg" ng-show="incorr_otp">
+                <span class="error" >Incorrect OTP.</span><!-- 
+                <span class="error">An OTP sent to your mobile phone</span> -->
+            </div>
+            <ul class="buttons">
+                <li class="list"><span class="resend" ng-click="resend_cook_complete_profile_otp()">Resend OTP</span></li>
+                <li class="list"><input type="submit" name="" class="submit-btn" value="OK" ng-click="verify_cook_otp_complete_profile(cook_reg_otp)"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>	
+$(".close-popup").click(function(){
+    $(".otp-popup").hide();
+});
+</script>
+
+<script>
+
+	// $.cookie("eatoeato.loc", null, { path: '/' });
+	// $.cookie("formatted_addr", null, { path: '/' });
+	var options = {
+		types: ['(cities)'],
+
+	};
+
+	var input = document.getElementById('autocomplete_addr');
+
+	var autocomplete = new google.maps.places.Autocomplete(input);
+	google.maps.event.addListener(autocomplete, 'place_changed', function () {
+		fillInAddress();
+	});
+
+	function fillInAddress() {
+		/* Get the place details from the Autocomplete object. */
+		/* The Autocomplete.getPlace() call retrieves a PlaceResult object */
+
+		var place = autocomplete.getPlace();
+		//console.log(place);
+		// $.cookie('eatoeato.loc', place.address_components[0].long_name);
+		$.cookie('formatted_addr', place.formatted_address);
+		//console.log(place);
+				$('.location_btn').click();
+
+	}
+
+
+</script>

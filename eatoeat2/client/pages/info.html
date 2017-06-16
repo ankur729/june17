@@ -1,0 +1,43 @@
+<div class="header common-header" ng-controller="user_register">
+	<div class="container">
+		<a href="#/listing" class="logo"><img src="public/images/logo.png"></a>
+	
+		<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+	</div>
+
+<div ng-include="'pages/inc/breadcrumbs.html'" class="bread_ui ng-scope"><div class="container ng-scope" ng-init="loc_val_cookies()">
+	<ul class="breadcrumbs">
+		<li class="list"><a href="#0" class="link">Home</a></li>
+		<!--<li class="list"><a href="#/listing" class="link">Listing</a></li>-->
+		<li class="list ng-binding">Preet Vihar</li>
+		
+	</ul>
+</div></div>
+
+</div>
+
+
+		
+
+
+
+	<div class="container info-page" ng-init="get_footer_info()" >
+		<div class="inner-body">
+		<div class="top-details">
+			<h1 class="page-name">{{footer_page.info_title}}</h1>
+			<p class="text">{{footer_page.info_page_desc}}</p>
+		</div>
+		<div ng-bind-html="toTrustedHTML(footer_page.info_desc)" class="content-part">
+			<p class="text"></p>
+		</div>
+		
+		
+		
+
+
+		</div>
+	</div>
+	
+	
+
+<div ng-include="'pages/inc/footer.html'" ></div>

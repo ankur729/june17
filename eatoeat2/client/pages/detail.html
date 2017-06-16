@@ -1,0 +1,451 @@
+<div ng-controller="user_register" ng-init="fetch_food_detail_banner()" ng-cloak>
+
+
+
+
+	<link rel="stylesheet" href="plugin/price-ranger/css/1.css">
+	<link href="plugin/calendar/css/1.css" rel="stylesheet">
+	<link href="plugin/sumogallery/sumogallery.css" rel="stylesheet">
+
+	<div ng-include="'pages/popup/select-user.html'" ng-show="ask_user_type_show"></div>
+	<div class="detail-page" ng-init="captured_food_id_fetch()">
+		<div class="banner"><img src="{{food_detail_page_banner_view.banner_img}}"></div>
+		<div class="header">
+			<div class="container">
+				<span class="logo" ng-click="listing_redirect()" style="cursor: pointer"><img src="{{global_setting_detail_view.website_logo}}"></span>
+				<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+			</div>
+
+			<!--<div class="cook-short-detail">
+				<div class="container">
+					<div class="left-detail">
+						<h1 class="name">{{fetched_food_view.cook_name}}</h1>
+					
+					</div>
+					<div class="right-detail">
+						<div class="total-star">
+							<span class="percent">4.5</span>
+							<img src="public/images/icon/big-star.png">
+						</div>
+						<div class="rating">
+							<ul class="stars">
+								<li class="list"><img src="public/images/icon/big-star.png"></li>
+								<li class="list"><img src="public/images/icon/big-star.png"></li>
+								<li class="list"><img src="public/images/icon/big-star.png"></li>
+								<li class="list"><img src="public/images/icon/big-star.png"></li>
+								<li class="list"><img src="public/images/icon/no-star.png"></li>
+							</ul>
+							<span class="number">28 Total</span>
+						</div>
+					</div>
+				</div>
+			</div>-->
+
+		</div>
+
+		<div class="bread_ui">
+		<div class="container" ng-init="loc_val_cookies()">
+			<ul class="breadcrumbs">
+				<li class="list"><a href="#0" class="link">Home</a></li>
+				<!--<li class="list"><a href="#/listing" class="link">Listing</a></li>-->
+				<li class="list">{{loc_show}}</li>
+
+				<li class="list">{{food_name_breadcrumb_detail}}</li>
+				
+				
+			</ul>
+		</div>
+		</div>
+
+		
+
+		<div class="container">
+				
+			<div class="full-detail">
+				<div class="set-padding">
+					<div class="row margin-top-bottom-10px">
+						<a href="#/listing" class="back-to-list"> <i class="fa fa-caret-left"></i> Back To Listing</a>
+					</div>
+					<!-- left panel start here -->
+					<div class="left-panel">
+
+						<div class="seaTabs row">
+							<div class="seaTabs_switch row">
+								<div class="seaTabs_tab" ng-class="{seaTabs_switch_active: $index==0}" ng-repeat="(key,menu) in menu_view">
+									<span ng-repeat="(classkey, classprop) in menu">{{classkey}} Menu</span>
+								</div>
+							</div>
+
+							<div class="seaTabs_content">
+								<div class="seaTabs_item" ng-class="{seaTabs_content_active: $index==0}" ng-repeat="(key,menu) in menu_view">
+
+
+									<div class="tab-list active" ng-repeat="(classkey, classprop) in menu">
+
+										<div class="tab-data" ng-repeat="class in classprop">
+											<div class="tab-data-list">
+												<div class="detail-head">
+													<div class="coloum-div col-px-75 center">
+														<span class="thumb"><img src="{{class.food_img[0].food_img_web}}"></span>
+													</div>
+													<div class="coloum-div">
+														<h5 class="name">{{class.food_name}}
+															<i class="type"><img src="public/images/icon/veg.jpg" ng-if="class.food_type=='Vegetarian'"></i>
+															<i class="type"><img src="public/images/icon/non-veg.jpg" ng-if="class.food_type=='Non Vegetarian'"></i>
+														</h5>
+														<div class="cuisines">
+															<span class="subtext">Cuisines :</span>
+															<ul class="cuisine-list">
+																<li class="list">Punjabi</li>
+															</ul>
+														</div>
+													</div>
+
+													<div class="coloum-div center col-px-100">
+														<div class="qty-controller">
+															<!--<span class="button"  ng-click="decreaseItemCount_detail(class,classkey)">-</span>
+												<span class="qty-show">{{class.cart_qty}}</span>-->
+															<span class="button" ng-click="increaseItemCount_detail(class,classkey)">+</span>
+														</div>
+													</div>
+
+													<div class="coloum-div col-px-50">
+														<div class="price-data">
+															<span class="price">Rs. {{class.food_price_per_plate}}</span>
+															<span class="act-for">Per Plate</span>
+														</div>
+													</div>
+												</div>
+												<div class="food-about">
+													<p>{{class.food_desc}}</p>
+
+
+												</div>
+												<div class="row">
+													<ul class="gallery">
+														<li class="list" ng-repeat="food_arr in class.food_img">
+															<img data-sgallery="group1" title="yup image is cool" data-full="{{food_arr.food_img_web}}" data-thumb="public/images/product/1.jpg"
+																src="{{food_arr.food_img_web}}">
+														</li>
+														<!--<li class="list">
+															<img data-sgallery="group1" title="yup image is cool" data-full="public/images/product/1.jpg" data-thumb="public/images/product/1.jpg"
+																src="public/images/product/1.jpg">
+														</li>
+														<li class="list">
+															<img data-sgallery="group1" title="yup image is cool" data-full="public/images/product/1.jpg" data-thumb="public/images/product/1.jpg"
+																src="public/images/product/1.jpg">
+														</li>
+														<li class="list">
+															<img data-sgallery="group1" title="yup image is cool" data-full="public/images/product/1.jpg" data-thumb="public/images/product/1.jpg"
+																src="public/images/product/1.jpg">
+														</li>-->
+													</ul>
+												
+												<div class="calendar">
+													<datepicker class="" date-format="dd-MM-yyyy" datepicker-show="true" 
+															date-min-limit="{{min_date_for_listing}}">
+															<input type="text" class="input-box" id={{classkey}}{{class.food_id}} ng-model="dd.date" ng-change="check_food_avail(class,classkey,class.food_id)" />
+														</datepicker>
+
+
+												</div>
+														
+					<!--<input class="input-box span2" value="02/16/12" data-date-format="mm/dd/yy" id="{{class.food_id}}" type="text" ng-click="detail_page_date(class.food_id)">
+									-->
+<!--<div class="calendar"></div>-->
+
+    
+
+													<div class="row" style="padding-top: 130px;">
+														<!--<div class="col-md-30 right">
+															<div class="total-rating">
+																<span class="number">4.5</span>
+																<span class="total-user">200 reviews</span>
+																<ul class="star-rating">
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list given"><i class="fa fa-star"></i></li>
+																	<li class="star-list "><i class="fa fa-star"></i></li>
+																</ul>
+															</div>
+															<ul class="rating-distribution">
+																<li class="list">
+																	<span class="parameters">5 Star</span>
+																	<div class="meter-line">
+																		<span class="speed-up" style="width:10%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">4 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:25%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">3 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:25%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">2 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:20%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+<li class="list">
+	<span class="parameters">1 Star</span>
+	<div class="meter-line">
+		<span class="speed-up" style="width:20%;"></span>
+</div>
+<span class="number">2</span>
+</li>
+</ul>
+</div>-->
+
+<div class="col-md-100 left padding-right-15px">
+	<ul class="review-list">
+		<li class="list" ng-repeat="review in class.food_review">
+			<div class="div-coloum user-detail col-px-150 center">
+				<span class="initial-name color-a">V</span>
+				<span class="user-name">{{review.username}}</span>
+			</div>
+			<div class="div-coloum review-detail">
+				<h4 class="title">{{review.review_title}} <span class="date">{{review.date}}</span></h4>
+				<ul class="star-rating">
+
+					<div ng-if="review.review_rating=='1'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+					</div>
+					<div ng-if="review.review_rating=='2'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+
+					</div>
+					<div ng-if="review.review_rating=='3'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+
+					</div>
+					<div ng-if="review.review_rating=='4'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list "><i class="fa fa-star"></i></li>
+
+					</div>
+					<div ng-if="review.review_rating=='5'">
+
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+							<li class="star-list given"><i class="fa fa-star"></i></li>
+
+					</div>
+					
+				</ul>
+				<p class="comment">{{review.review_desc}} </p>
+			</div>
+		</li>
+	
+	</ul>
+	<!--<a href="#0" class="load-more">View More</a>-->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+<!-- left panel end here -->
+
+
+<div class="right-panel">
+	<div class="cook-availiblity">
+		<span class="head"><i class="status"><img src="public/images/icon/online.png" id="avail_status"></i> Availablity</span>
+		<ul class="weekday-list">
+
+			<div ng-if="fetched_food_view.available_hours.mon_from">
+				<li class="list">
+					<span class="title">Monday</span>
+					<span class="label">{{fetched_food_view.available_hours.mon_from}} - {{fetched_food_view.available_hours.mon_to}}</span>
+				</li>
+
+			</div>
+			<div ng-if="fetched_food_view.available_hours.mon_from==''">
+				<li class="list">
+					<span class="title">Monday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+			<div ng-if="fetched_food_view.available_hours.tue_from">
+				<li class="list">
+					<span class="title">Tuesday</span>
+					<span class="label">{{fetched_food_view.available_hours.tue_from}} - {{fetched_food_view.available_hours.tue_to}}</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.tue_from==''">
+				<li class="list">
+					<span class="title">Tuesday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+
+
+			<div ng-if="fetched_food_view.available_hours.wed_from">
+				<li class="list">
+					<span class="title">Wednesday</span>
+					<span class="label">{{fetched_food_view.available_hours.wed_from}} - {{fetched_food_view.available_hours.wed_to}}</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.wed_from==''">
+				<li class="list">
+					<span class="title">Wednesday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+
+
+			<div ng-if="fetched_food_view.available_hours.thu_from">
+				<li class="list">
+					<span class="title">Thursday</span>
+					<span class="label">{{fetched_food_view.available_hours.thu_from}} - {{fetched_food_view.available_hours.thu_to}}</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.thu_from==''">
+				<li class="list">
+					<span class="title">Thursday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.fri_from">
+				<li class="list">
+					<span class="title">Friday</span>
+					<span class="label">{{fetched_food_view.available_hours.fri_from}} - {{fetched_food_view.available_hours.fri_to}}</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.fri_from==''">
+				<li class="list">
+					<span class="title">Friday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.sat_from">
+				<li class="list">
+					<span class="title">Saturday</span>
+					<span class="label">{{fetched_food_view.available_hours.sat_from}} - {{fetched_food_view.available_hours.sat_to}}</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.sat_from==''">
+				<li class="list">
+					<span class="title">Saturday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.sun_from">
+				<li class="list">
+					<span class="title">Sunday</span>
+					<span class="label">{{fetched_food_view.available_hours.sun_from}} - {{fetched_food_view.available_hours.sun_to}}</span>
+				</li>
+
+			</div>
+
+			<div ng-if="fetched_food_view.available_hours.sun_from==''">
+				<li class="list">
+					<span class="title">Sunday</span>
+					<span class="label close">Close</span>
+				</li>
+
+			</div>
+			<!--<div class="call">Call : +91 - {{fetched_food_view.cook_contact}}</div>-->
+		</ul>
+	</div>
+	<!--
+					<div class="video">
+						<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Vh36NPTjudY" frameborder="0" allowfullscreen></iframe>
+					</div>-->
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+<div ng-include="'pages/inc/footer.html'"></div>
+<script src="plugin/tabs/js/sea.tabs.js"></script>
+
+<script src="plugin/calendar/js/1.js"></script>
+<script src="plugin/sumogallery/jquery.sumogallery.js"></script>
+
+<script type="text/javascript">
+
+	$(".tab-list .option-menu").click(function () {
+		$(this).next(".tab-data").slideToggle();
+	});
+
+
+
+	$(".review-form-popup .close-popup").click(function () {
+		$(this).parents(".review-form-popup").fadeOut(200);
+	});
+
+	$(".review-btn").click(function () {
+		$(".review-form-popup").fadeIn();
+	});
+	
+
+
+</script>
+
+
+</div>

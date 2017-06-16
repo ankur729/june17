@@ -1,0 +1,254 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel" ng-init="fetch_user_order_detail_by_id()">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container" >
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>	
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">User Order Details</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list"><a href="#0" class="link">Cook Order</a></li>
+						<li class="list">User Order Details</li>
+					</ul>
+
+					<ul class="link-icon">
+						
+						<!--<li class="list">
+							<a href="#/admin/cook-order" class="blue-btn"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+						</li>-->
+						<li class="list">
+							<a href="#/admin/user-order-view" class="white-btn"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<!-- table view start here -->
+				<div class="table-view">
+					<h3 class="head-name">User Order Details</h3>	
+					
+	<div class="order-detail-page">
+						<ul class="order-listing">
+							<li class="list">
+								<div class="order-base">
+									<div class="mini-size">
+										<span class="label"> Order placed </span>
+										<span class="value"> {{view_all_order_detail_page.date}} </span>
+									</div>
+									<div class="mini-size">
+										<span class="label">  Total </span>
+										<span class="value"> Rs. {{view_all_order_detail_page.items[0].grand_total}}.00 </span>
+									</div>
+									<div class="mini-size">
+										<span class="label">  Ship To </span>
+										<a href="#0" class="trigger">{{view_all_order_detail_page.items[0].username}}<!-- <i class="fa fa-caret-down"></i> --></a>
+									</div><!-- 
+									<div class="mini-size">
+										<span class="label">Delivery By</span>
+										<span class="value">Service Center (New Delhi Center)</span>
+									</div> -->
+									<a href="#0" class="order-number">{{view_all_order_detail_page.order_id}}</a>
+								</div>
+								<div class="customer-details">
+									<span class="contact"><b>Mobile:</b> {{view_all_order_detail_page.phone}} </span>
+									<span class="contact"><b>Email:</b>  {{view_all_order_detail_page.email}}  </span>
+								</div>
+
+								<div class="order-repeat" ng-repeat="order in view_all_order_detail_page.items">
+									<div class="ordered-product-details">
+										<span class="pro-thumb"><img src="images/product/1.jpg" class="properproduct"></span>
+										<div class="product-details">
+                                            <a href="#0" class="link">{{order.food_name}}</a>
+											<div class="cuisines">
+												<span class="subtext">Cuisines :</span>
+												<ul class="cuisine-list">
+												<li class="list ng-binding">punjabi</li>
+												</ul>
+												
+											</div>
+											<div class="delivery-by">
+												<span class="label">Delivery By</span>
+												<span class="value">Service Center ( {{order.service_center_name}} Center)</span>
+											</div>
+											<div class="delivery-by">
+												<span class="label">Cook Name</span>
+                                                <span class="value">{{order.cook_name}}</span>
+											</div>
+										</div>
+										<!-- <a href="" class="add-review-btn right margin-left-10px">Add Review</a> -->
+
+
+										<span class="food-type" ng-if="order.food_type=='Vegetarian'"><img src="public/images/icon/veg.jpg"></span>
+										<span class="food-type" ng-if="order.food_type=='Non Vegetarian'"><img src="public/images/icon/veg.jpg"></span>
+									</div>
+
+									<ul class="order-status">
+										<li class="list">
+											<div class="table-row single">
+
+                                                <div ng-if="view_all_order_detail_page.order_status=='pending'">
+														<p class="data" ng-if="order.sub_order_stat=='cancelled'"> 
+														
+														Order has been Cancelled
+														  
+														  </p>  
+													<p class="data" ng-if="order.sub_order_stat=='pending'"> 
+														
+														Order has been Placed
+														  
+														  </p>
+
+														  <p class="data" ng-if="order.sub_order_stat=='confirmed'"> 
+														
+														Order has been Confirmed
+														  
+														  </p>
+
+														  <p class="data" ng-if="order.sub_order_stat=='ready_for_del'"> 
+														
+														Order is Ready For Delivery
+														  
+														  </p>
+
+														  <p class="data" ng-if="order.sub_order_stat=='delivered'"> 
+														
+														Order has been Delivred
+														  
+														  </p>
+														  
+                                                </div>
+                                              
+											</div>
+										</li>
+										<li class="list">
+											<div class="table-row double"><p class="data">Delivery day : <span class="get">{{order.order_date}}</span></p></div>
+											<div class="table-row double"><p class="data">Delivery Fee :  <span class="get">Rs. 20</span></p></div>
+										</li>
+										<li class="list">
+											<div class="table-row double"><p class="data">Delivery time : <span class="get"> 2 PM</span></p></div>
+											<div class="table-row double"><p class="data">Payment Mode :  <span class="get">Online</span></p></div>
+										</li>
+										<li class="list">
+											<div class="table-row double">
+												<p class="data">Rs. {{order.food_price}} &nbsp; | &nbsp; <span class="get">{{order.food_qty}} qty </span></p>
+											</div>
+											<div class="table-row double">
+												<p class="data"><a href="#0" class="cancel-btn">Cancel</a></p>
+											</div>
+										</li>
+									</ul>
+
+									<div class="row padding-20px">
+										<div class="row">
+						                    <div class="col-md-25 left">
+						                        <select class="select-option" name="order_status" ng-model="order_status.status">
+						                            <option value="">Select Status</option>
+						                            <option value="confirmed">confirmed</option>
+						                            <option value="ready_for_del">ready for delivery</option>
+						                            <option value="delivered">delivered</option>
+						                        </select>
+						                    </div>
+						                    <div class="col-md-75 left">
+						                        <input name="order_product_id" value="252" type="hidden" >
+						                        <div class="col-md-75 left"><input name="comment" placeholder="comment" class="input-box" required="" type="text" ng-model="order_status.comment"></div>
+						                        <div class="col-md-25 left"><input class="submit-btn row" value="submit" type="submit" ng-click="change_order_status(view_all_order_detail_page.order_id,order_status.status,order_status.comment,order.food_id,order)"></div>
+						                    </div>
+					                    </div>
+					                    <ul class="delivery-trackable">
+					                    	<li class="list main" >
+					                    		<span class="label">Status</span>
+					                    		<div class="data">
+					                    			<span class="date">Date</span>
+					                    			<span class="time">/ Time</span>
+					                    		</div>
+					                    		<p class="comment">Comment</p>
+					                    	</li>
+					                    	<li class="list" ng-repeat="track in order.track_order">
+											
+												<div class="label" ng-if="track.order_status=='cancelled'">
+															<span>Order Cancelled</span>
+													</div>
+													<div class="label" ng-if="track.order_status=='confirmed'">
+															<span>Order Confirmed</span>
+													</div>	
+													<div class="label" ng-if="track.order_status=='ready_for_del'">
+															<span>Order Ready For Delivery</span>
+													</div>	
+													<div class="label" ng-if="track.order_status=='delivered'">
+															<span>Order Delivered</span>
+													</div>	
+					                    		<div class="data">
+					                    			<span class="date">{{track.status_date}}</span>
+													<span class="time">{{track.status_time | date:'HH:mm'}}</span>
+					                    		</div>
+					                    		<p class="comment">{{track.order_comment}}</p>
+					                    	</li>
+					                    	<!--<li class="list">
+					                    		<span class="label">ready for delivery</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>
+					                    	<li class="list">
+					                    		<span class="label">delivered</span>
+					                    		<div class="data">
+					                    			<span class="date">25 June 2017</span>
+					                    			<span class="time">2 PM</span>
+					                    		</div>
+					                    		<p class="comment">This product is successfully Delivered</p>
+					                    	</li>-->
+					                    </ul>
+					                </div>
+
+									<div class="total-details">
+										<div class="address">
+											<b class="title">Delivery Address:</b>
+											{{order.addr_info}}
+										</div>
+										<div class="order-total">
+											<span class="label">Order Total:</span>
+                                            <span class="amount">Rs.{{order.food_total_price}}</span>
+										</div>
+									</div>
+								</div>
+
+
+								</div>
+
+				</div>
+				<!-- table view end here -->
+
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- main container end herer -->
+<script src="plugin/tabs/js/sea.tabs.js"></script>
+
+<script type="text/javascript">
+	
+$(".left-pannel .main-list").click(function(){
+	$(this).children(".nav-fly").slideToggle(200);
+	$(this).nextAll(".main-list").children(".nav-fly").slideUp(1000);
+	$(this).prevAll(".main-list").children(".nav-fly").slideUp(1000);
+});
+</script>

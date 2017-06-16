@@ -1,0 +1,259 @@
+<ul class="order-listing">
+	<li class="list" ng-repeat="order in view_open_order_user" ng-if="order.order_status=='delivered' ">
+		<div class="order-base">
+			<div class="mini-size">
+				<span class="label"> Order placed </span>
+				<span class="value"> {{order.date}} </span>
+			</div>
+			<div class="mini-size">
+				<span class="label">  Total </span>
+				<span class="value"> Rs. {{order.order_total}}.00 </span>
+			</div>
+			<div class="mini-size">
+				<span class="label">  Ship To </span>
+				<a href="#0" class="trigger">{{order.items[0].username}} <!-- <i class="fa fa-caret-down"></i> --></a>
+			</div>
+			<a href="#0" class="order-number">{{order.order_id}}</a>
+		</div>
+
+		<div ng-repeat="sub_order in order.items">
+			<!--|| sub_order.sub_order_status=='ready_for_del' || sub_order.sub_order_status=='confirmed'-->
+			<!--<div ng-if="sub_order.order_status=='ready_for_del' || sub_order.order_status=='pending' || sub_order.order_status=='confirmed'">-->
+				<!--CLOSE FOR IF COOK ID IS VALID-->
+				<!--<div ng-if="sub_order.cook_id==cook_id_order_front">-->
+
+					<div class="ordered-product-details">
+						<span class="pro-thumb"><img src="public/images/product/1.jpg" class="properproduct"></span>
+						<div class="product-details">
+							<a href="#0" class="link">{{sub_order.food_name}}</a>
+							<div class="cuisines">
+								<span class="subtext">Cuisines :</span>
+								<ul class="cuisine-list">
+									<div ng-repeat="cuisine in sub_order.food_cuisine">
+										<div ng-if="cuisine.status=='true'">
+											<li class="list ng-binding">{{cuisine.category_name}}</li>
+
+										</div>
+
+
+									</div>
+
+								</ul>
+							</div>
+						</div>
+
+
+						<!-- <a href="" class="add-review-btn right margin-left-10px">Add Review</a> -->
+
+						<div ng-if="sub_order.food_type == 'Vegetarian'">
+							<span class="food-type"><img src="public/images/icon/veg.jpg"></span>
+						</div>
+						<div ng-if="sub_order.food_type == 'Non Vegetarian'">
+							<span class="food-type"><img src="public/images/icon/non-veg.jpg"></span>
+						</div>
+
+					</div>
+
+					<ul class="order-status">
+						<li class="list">
+							<div class="table-row single">
+
+
+							
+								<p class="data" ng-if="order.order_status=='delivered'">
+
+									Order has been 
+									<span style="color:green"> delivered </span>
+
+</p>
+
+
+
+</div>
+</li>
+<li class="list">
+	<div class="table-row double">
+		<p class="data">Delivery day : <span class="get">{{sub_order.order_date}}</span></p>
+	</div>
+	<div class="table-row double">
+		<p class="data">Delivery Fee : <span class="get">Rs. 30</span></p>
+	</div>
+</li>
+<li class="list">
+	<div class="table-row double">
+		<p class="data">Delivery time : <span class="get"> 2 PM</span></p>
+	</div>
+	<div class="table-row double">
+		<p class="data">Payment Mode : <span class="get">Online</span></p>
+	</div>
+</li>
+	<li class="list">
+				<div class="table-row double"><p class="data">Rs. {{sub_order.food_price}} &nbsp; | &nbsp; <span class="get">{{sub_order.food_qty}} qty </span></p></div>
+				<div class="table-row double" style="cursor: pointer " id="rate-btn"><p class="data"><span class="cancel-btn"  ng-click="show_rate_now(sub_order.food_id,sub_order.cook_id,order.order_id,sub_order.food_name)" >Rate Now</span></p></div>
+			</li>
+</ul>
+
+<div class="total-details">
+	<div class="address">
+		<b class="title">Delivery Address:</b> {{sub_order.addr_info}}
+	</div><br/>
+	<div class="address">
+		<b class="title"> Ship To:</b> {{sub_order.addr_name}}
+	</div>
+	<!--<div class="mini-size">
+				<span class="label">  Ship To </span>
+				<a href="#0" class="trigger">{{main_order.items[0].addr_name}} </a>
+			</div>-->
+	<div class="order-total">
+		<span class="label">Order Total:</span>
+		<span class="amount">Rs.{{sub_order.food_total_price}}</span>
+	</div>
+
+
+</div>
+
+
+
+<!--</div>-->
+
+<!--</div>-->
+
+</div>
+<!--CLOSE FOR IF COOK ID IS VALID-->
+
+<!--</div>-->
+
+</div>
+
+<!--<div class="ordered-product-details">
+			<span class="pro-thumb"><img src="images/product/1.jpg" class="properproduct"></span>
+			<div class="product-details">
+				<a href="#0" class="link">{{order.order_data.food_name}}</a>
+				<div class="cuisines">
+					<span class="subtext">Cuisines :</span>
+					<ul class="cuisine-list">
+					<li class="list ng-binding">punjabi</li>
+					</ul>
+				</div>
+			</div>
+			<span class="food-type"><img src="images/icon/veg.jpg"></span>
+		</div>
+
+		<ul class="order-status">
+			<li class="list">
+				<div class="table-row single">
+					<p class="data">Your order has been placed</p>
+				</div>
+			</li>
+			<li class="list">
+				<div class="table-row double"><p class="data">Delivery day : <span class="get">{{order.order_data.order_date}}</span></p></div>
+				<div class="table-row double"><p class="data">Delivery Fee :  <span class="get">Rs. 20</span></p></div>
+			</li>
+			<li class="list">
+				<div class="table-row double"><p class="data">Delivery time : <span class="get"> {{order.time   | date:'HH:mm:ss' }}</span></p></div>
+				<div class="table-row double"><p class="data">Payment Mode :  <span class="get">Online</span></p></div>
+			</li>
+			<li class="list">
+				<div class="table-row double"><p class="data">Rs. {{order.order_data.food_price}} &nbsp; | &nbsp; <span class="get">{{order.order_data.food_qty}} qty </span></p></div>
+			
+			</li>
+		</ul>
+
+		<div class="total-details">
+
+			<div class="address">
+				<b class="title">Delivery Address:</b>
+				k-368 jahangir puri delhi 110033, near hanuman mandir,
+				New Delhi - 110033, Delhi
+			</div>
+
+			<div class="order-total">
+				<span class="label">Order Total:</span>
+				<span class="amount">Rs.{{order.order_data.grand_total}}</span>
+			</div>
+		</div>-->
+</li>
+</ul>
+
+		<!-- review popup start here -->
+<div class="review-popup-feed">
+    <div class="design-box">
+        <span class="close-popup"> <i class="fa fa-close"></i> </span>
+        <div class="section-name">
+            <h4 class="title">Review & Rating</h4>
+            <span class="caption">Share your Experience, Please Review & Rate your food</span>
+        </div>
+
+        <ul class="review-form">
+            <li class="form-list">
+                <div class="title-bar">
+                    <span class="step">1</span>
+                    <span class="title">Review Title</span>
+                </div>
+                <div class="input-div">
+                    <input name="" class="input-box" placeholder="Please enter your review title" type="text" ng-model="user_review_detail.review_title">
+                    <span class="caption">(Maximum 60 characters.)</span>
+                </div>
+            </li>
+            <li class="form-list">
+                <div class="title-bar">
+                    <span class="step">3</span>
+                    <span class="title">Your Review</span>
+                </div>
+                <div class="input-div">
+                    <textarea class="textarea" placeholder="Please enter your review" ng-model="user_review_detail.review_desc"></textarea>
+                    <span class="caption">(Maximum 60 characters.)</span>
+                </div>
+            </li>
+            <li class="form-list">
+                <div class="title-bar">
+                    <span class="step">4</span>
+                    <span class="title">Your Rating</span>
+                </div>
+                <div class="input-div">
+                    <ul class="star-rating">
+                        <li class="stars star-1">
+                            <label class="title">Bekar</label>
+                            <input type="radio" value="1" class="radio"  name="sad" ng-model="user_review_detail.review_rating">
+                        </li>
+                        <li class="stars star-2">
+                            <label class="title">Annhaan</label>
+                            <input type="radio"  value="2" class="radio"  name="sad" ng-model="user_review_detail.review_rating">
+                        </li>
+                        <li class="stars star-3">
+                            <label class="title">Theek h</label>
+                            <input type="radio"  value="3" class="radio"  name="sad" ng-model="user_review_detail.review_rating">
+                        </li>
+                        <li class="stars star-4">
+                            <label class="title">Mast</label>
+                            <input type="radio"  value="4" class="radio"  name="sad" ng-model="user_review_detail.review_rating">
+                        </li>
+                        <li class="stars star-5">
+                            <label class="title">Jhakkass</label>
+                            <input type="radio"  value="5" class="radio"  name="sad" ng-model="user_review_detail.review_rating">
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <input name="" value="Submit" class="submit-btn row" type="submit" style="cursor: pointer" ng-click="save_user_review(user_review_detail)">
+        </ul>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(".close-popup").click(function(){
+        $(".review-popup-feed").hide();
+    });
+
+	$("#rate-btn").click(function(){
+		 $(".review-popup-feed").show();
+	});
+
+
+$(".star-rating .stars").click(function(){
+    $(this).addClass("active");
+    $(this).prevAll().addClass("active");
+    $(this).nextAll().removeClass("active");
+});
+</script>

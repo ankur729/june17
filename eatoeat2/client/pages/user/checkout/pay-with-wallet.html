@@ -1,0 +1,15 @@
+
+<div ng-init="get_user_wallet_info()" >
+<h4 class="title">Pay with your wallet</h4> 
+	<div class="current-balance">
+		<span class="label">Wallet Amount</span>
+			{{curr_user_bal}}
+	</div>
+	<div class="pay-amount" >
+		<span class="label">Payment Amount</span>
+		{{price_data.grand_total}}
+	</div>
+<input name="payment-confirm" class="payment-confirm" value="Pay Now" type="button"  ng-click="pay_now()">
+
+
+</div>

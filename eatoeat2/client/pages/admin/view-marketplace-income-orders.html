@@ -1,0 +1,165 @@
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+	<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Cook Payment Detail</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list">Cook Payment Detail</li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">Cook Payment Detail</h3>
+
+					<div class="search-model">
+						<div class="search-div">
+							<label class="search-name">Cook Name</label>
+							<input type="text" name="" class="input-box" placeholder="Cook Name">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Total Orders	</label>
+							<input type="text" name="" class="input-box" placeholder="Total Order">
+						</div>
+						<!--<div class="search-div">
+							<label class="search-name">Present Commission From</label>
+							<input type="text" name="" class="input-box" placeholder="From">
+						</div>
+							<div class="search-div">
+							<label class="search-name">Present Commission From</label>
+							<input type="text" name="" class="input-box" placeholder="From">
+						</div>-->
+						<!--<div class="search-div">
+							<label class="search-name">Present Commission To</label>
+							<input type="text" name="" class="input-box" placeholder="To">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Total Amount From</label>
+							<input type="text" name="" class="input-box" placeholder="From">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Total Amount To</label>
+							<input type="text" name="" class="input-box" placeholder="To">
+						</div>
+					</div>
+
+
+					<div class="search-model">
+						<div class="search-div">
+							<label class="search-name">Cook Amount From</label>
+							<input type="text" name="" class="input-box" placeholder="From">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Cook Amount To</label>
+							<input type="text" name="" class="input-box" placeholder="To">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Admin Amount From</label>
+							<input type="text" name="" class="input-box" placeholder="From">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Admin Amount To</label>
+							<input type="text" name="" class="input-box" placeholder="To">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Date Added From</label>
+							<input type="text"  value="11-17-2015" id="demo-1" class="input-box">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Date Added To</label>
+							<input type="text"  value="11-17-2015" id="demo-1" class="input-box">
+						</div>
+						<button class="search-btn right">Filter</button>-->
+					</div>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div">
+								<span class="title">Order ID</span>
+							</div>
+
+							<!--<div class="coloum-div col-md-10 center">
+								<span class="title">Ordered By</span>
+							</div>-->
+							<div class="coloum-div col-md-20 center">
+								<span class="title">Delivery Date</span>
+							</div>
+							<div class="coloum-div col-md-20 center">
+								<span class="title">Order Amount</span>
+							</div>
+							<!--<div class="coloum-div col-md-10 center">
+								<span class="title">% Commission  </span>
+							</div>-->
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Amount Payable </span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Amount Paid  </span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Amount Due  </span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">PAY </span>
+							</div>
+							<!--<div class="coloum-div col-md-10 center">
+								<span class="title">Paid To Seller</span>
+							</div>
+							<div class="coloum-div col-md-15 center">
+								<span class="title">Remaining Amount</span>
+							</div>
+							<div class="coloum-div center col-px-100">
+								<span class="title">Action</span>
+							</div>-->
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group">
+						<li class="list" ng-repeat="income in income_list_view">
+							<div class="coloum-div">
+								<span class="title">{{income.cook_name}}</span>
+							</div>
+							<div class="coloum-div col-md-20 center">
+								<span class="title"> {{income.cook_total_income}}.00 </span>
+							</div>
+							<div class="coloum-div col-md-20 center">
+								<span class="title"> NILL</span>
+							</div>
+
+							<div class="coloum-div col-md-20 center">
+								<span class="title">NIll</span>
+							</div>
+							<div class="coloum-div col-md-20 center">
+								<a href=""> <span class="title">{{income.cook_total_orders}}</span></a>
+							</div>
+
+						</li>
+
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- main container end herer -->

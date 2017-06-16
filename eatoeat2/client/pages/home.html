@@ -1,0 +1,144 @@
+
+<div ng-controller="home_controller">
+
+
+
+<div ng-controller="location_controller" ng-init="fetch_home_banner()" ng-cloak>
+
+<div >
+
+	<div ng-include="'pages/popup/select-user.html'"  ng-show="ask_user_type_show"></div>
+
+<!--.main-page {background: url(../images/bg/main.jpg)no-repeat top center; background-size:100%; width: 100%; float: left;}-->
+<div class="main-page" style="background: url({{home_banner_insert.banner_img}})no-repeat top center; background-size:100%; width: 100%; float: left;">
+	<div class="header">
+		<div class="container">
+			<span class="logo"><img src="{{home_page_data_view.website_logo}}"></span>
+			<!--<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>-->
+
+
+<div class="right-menu-pannel">
+
+
+
+
+			
+<div class="right-menu-slide" ng-controller="user_register" ng-init="fetch_cart()">
+
+	<div class="more-food-list" >
+		<div class="box-model">
+			<h4 class="national-name">Food Menu {{pp}} <i class="fa fa-close close-food-menu"></i></h4>
+			<ul class="cat-listing">
+				<li class="cat-list">
+					<h6 class="cat-name">Indian</h6>
+					<ul class="sub-inner">
+						<li class="inner-list" ng-repeat="cuisine in view_cuisine_details_user">
+							
+							
+							<a href="#0" class="inner-link">{{cuisin}}</a>
+							
+							</li>
+					
+					</ul>
+				</li>
+			
+			</ul>
+		</div>
+	</div>
+
+	
+</div>
+
+<div class="joint-widgets" ng-controller="right_menu_controller" > 
+	<ul class="mobile-apps">
+		<li class="list"><a href="{{global_setting_detail_view.ios_link}}" class="link"><i class="fa fa-apple" aria-hidden="true"></i></a></li>
+		<li class="list"><a href="{{global_setting_detail_view.android_link}}" class="link"><i class="fa fa-android" aria-hidden="true"></i></a></li>
+	</ul>
+
+	<span class="login-btn"  ng-click="ask_user_type()" ng-init="login_logout_button_check()" ng-show="login_button_show">Login</span>
+
+		<div class="popup" ng-show="ask_user_type_show">	
+	<div class="ask-user-type" >
+		<span class="close-me"  ng-click="ask_user_type()"><i class="fa fa-close"></i></span>
+		<h3 class="heading">Choose your user type</h3>
+		<ul class="cat-buttons">
+			<li class="list"><a href="#/user_login" class="link user">User</a></li>
+			<li class="list"><a href="#/cook_login"  class="link cook">Cook</a></li>
+		</ul>
+		<span class="slang"><img src="public/images/slang.png"></span>
+	</div>
+</div>
+
+
+
+	<span class="login-btn"  ng-click="logout_for_user_cook()" ng-show="logout_button_show">Log Out</span>
+</div>
+
+<span class="menu-btn" ng-show="right_menu_show"><i class="fa fa-bars" aria-hidden="true"></i></span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="container" >
+		<div class="slang"><img src="public/images/slang.png"></div>
+		<div ng-include="'pages/search/location-search.html'" class="home-search"></div>
+
+		<div class="tagline">
+			<h3 class="heading">{{home_page_data_view.website_header}} </h3>
+			<p class="caption">{{home_page_data_view.website_caption}} </p>
+		</div>
+	</div>
+
+	<ul class="instructions">
+		<li class="list">
+			<div class="style">
+				<span class="icon"><img src="public/images/icon/location.png"></span>
+				<span class="text">Select your Location</span>
+			</div>
+		</li>
+		<li class="list">
+			<div class="style">
+				<span class="icon"><img src="public/images/icon/food.png"></span>
+				<span class="text">Choose your Food</span>
+			</div>
+		</li>
+		<li class="list">
+			<div class="style">
+				<span class="icon"><img src="public/images/icon/timeline.png"></span>
+				<span class="text">Set your timeline</span>
+			</div>
+		</li>
+		<li class="list">
+			<div class="style">
+				<span class="icon"><img src="public/images/icon/delivery.png"></span>
+				<span class="text">Delivery at your door step</span>
+			</div>
+		</li>
+	</ul>
+</div>
+
+ <!--<div id="map"></div>-->
+
+
+<div ng-include="'pages/inc/footer.html'"></div>
+
+
+<style>.cart-btn{display:none}</style>
+
+</div>
+
+
+</div>
+
+</div>

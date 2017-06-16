@@ -1,0 +1,182 @@
+<ul class="order-listing">
+	<li class="list" ng-repeat="order in view_cook_order" ng-if="order.order_status=='cancelled' ">
+		<div class="order-base">
+			<div class="mini-size">
+				<span class="label"> Order placed </span>
+				<span class="value"> {{order.date}} </span>
+			</div>
+			<div class="mini-size">
+				<span class="label">  Total </span>
+				<span class="value"> Rs. {{order.items[0].grand_total}}.00 </span>
+			</div>
+			<div class="mini-size">
+				<span class="label">  Ship To </span>
+				<a href="#0" class="trigger">{{order.items[0].username}} <!-- <i class="fa fa-caret-down"></i> --></a>
+			</div>
+			<a href="#0" class="order-number">{{order.order_id}}</a>
+		</div>
+
+		<div ng-repeat="sub_order in order.items">
+			<!--|| sub_order.sub_order_status=='ready_for_del' || sub_order.sub_order_status=='confirmed'-->
+			<!--<div ng-if="sub_order.order_status=='ready_for_del' || sub_order.order_status=='pending' || sub_order.order_status=='confirmed'">-->
+				<!--CLOSE FOR IF COOK ID IS VALID-->
+				<!--<div ng-if="sub_order.cook_id==cook_id_order_front">-->
+
+					<div class="ordered-product-details">
+						<span class="pro-thumb"><img src="public/images/product/1.jpg" class="properproduct"></span>
+						<div class="product-details">
+							<a href="#0" class="link">{{sub_order.food_name}}</a>
+							<div class="cuisines">
+								<span class="subtext">Cuisines :</span>
+								<ul class="cuisine-list">
+									<div ng-repeat="cuisine in sub_order.food_cuisine">
+										<div ng-if="cuisine.status=='true'">
+											<li class="list ng-binding">{{cuisine.category_name}}</li>
+
+										</div>
+
+
+									</div>
+
+								</ul>
+							</div>
+						</div>
+
+
+						<!-- <a href="" class="add-review-btn right margin-left-10px">Add Review</a> -->
+
+						<div ng-if="sub_order.food_type == 'Vegetarian'">
+							<span class="food-type"><img src="public/images/icon/veg.jpg"></span>
+						</div>
+						<div ng-if="sub_order.food_type == 'Non Vegetarian'">
+							<span class="food-type"><img src="public/images/icon/non-veg.jpg"></span>
+						</div>
+
+					</div>
+
+					<ul class="order-status">
+						<li class="list">
+							<div class="table-row single">
+
+
+							
+								<p class="data" ng-if="order.order_status=='cancelled'">
+
+									Order has been 
+									<span style="color:red"> Cancelled </span>
+
+</p>
+
+
+
+</div>
+</li>
+<li class="list">
+	<div class="table-row double">
+		<p class="data">Delivery day : <span class="get">{{sub_order.order_date}}</span></p>
+	</div>
+	<div class="table-row double">
+		<p class="data">Delivery Fee : <span class="get">Rs. 30</span></p>
+	</div>
+</li>
+<li class="list">
+	<div class="table-row double">
+		<p class="data">Delivery time : <span class="get"> 2 PM</span></p>
+	</div>
+	<div class="table-row double">
+		<p class="data">Payment Mode : <span class="get">Online</span></p>
+	</div>
+</li>
+<li class="list">
+	<div class="table-row double">
+		<p class="data">Rs. {{sub_order.order_date}} &nbsp; | &nbsp; <span class="get">{{sub_order.food_qty}} qty </span></p>
+	</div>
+	<!--<div class="table-row double" ng-if="sub_order.order_date!=curr_dy">
+		<p class="data">
+			<a class="cancel-btn" style="cursor: pointer" ng-click="cancel_order_cook(sub_order.order_id)">Cancel</a>
+</p>
+</div>-->
+</li>
+</ul>
+
+<div class="total-details">
+	<div class="address">
+		<b class="title">Delivery Address:</b> {{sub_order.addr_info}}
+	</div><br/>
+	<div class="address">
+		<b class="title"> Ship To:</b> {{sub_order.addr_name}}
+	</div>
+	<!--<div class="mini-size">
+				<span class="label">  Ship To </span>
+				<a href="#0" class="trigger">{{main_order.items[0].addr_name}} </a>
+			</div>-->
+	<div class="order-total">
+		<span class="label">Order Total:</span>
+		<span class="amount">Rs.{{sub_order.food_total_price}}</span>
+	</div>
+
+
+</div>
+
+
+
+<!--</div>-->
+
+<!--</div>-->
+
+</div>
+<!--CLOSE FOR IF COOK ID IS VALID-->
+
+<!--</div>-->
+
+</div>
+
+<!--<div class="ordered-product-details">
+			<span class="pro-thumb"><img src="images/product/1.jpg" class="properproduct"></span>
+			<div class="product-details">
+				<a href="#0" class="link">{{order.order_data.food_name}}</a>
+				<div class="cuisines">
+					<span class="subtext">Cuisines :</span>
+					<ul class="cuisine-list">
+					<li class="list ng-binding">punjabi</li>
+					</ul>
+				</div>
+			</div>
+			<span class="food-type"><img src="images/icon/veg.jpg"></span>
+		</div>
+
+		<ul class="order-status">
+			<li class="list">
+				<div class="table-row single">
+					<p class="data">Your order has been placed</p>
+				</div>
+			</li>
+			<li class="list">
+				<div class="table-row double"><p class="data">Delivery day : <span class="get">{{order.order_data.order_date}}</span></p></div>
+				<div class="table-row double"><p class="data">Delivery Fee :  <span class="get">Rs. 20</span></p></div>
+			</li>
+			<li class="list">
+				<div class="table-row double"><p class="data">Delivery time : <span class="get"> {{order.time   | date:'HH:mm:ss' }}</span></p></div>
+				<div class="table-row double"><p class="data">Payment Mode :  <span class="get">Online</span></p></div>
+			</li>
+			<li class="list">
+				<div class="table-row double"><p class="data">Rs. {{order.order_data.food_price}} &nbsp; | &nbsp; <span class="get">{{order.order_data.food_qty}} qty </span></p></div>
+			
+			</li>
+		</ul>
+
+		<div class="total-details">
+
+			<div class="address">
+				<b class="title">Delivery Address:</b>
+				k-368 jahangir puri delhi 110033, near hanuman mandir,
+				New Delhi - 110033, Delhi
+			</div>
+
+			<div class="order-total">
+				<span class="label">Order Total:</span>
+				<span class="amount">Rs.{{order.order_data.grand_total}}</span>
+			</div>
+		</div>-->
+</li>
+</ul>

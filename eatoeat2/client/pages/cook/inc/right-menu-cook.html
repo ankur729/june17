@@ -1,0 +1,33 @@
+<div  ng-controller="right_menu_controller" ng-init="login_logout_button_check()">
+
+
+<div class="joint-widgets"   > 
+	<ul class="mobile-apps">
+		<li class="list"><a href="{{global_setting_detail_view.ios_link}}" class="link"><i class="fa fa-apple" aria-hidden="true"></i></a></li>
+		<li class="list"><a href="{{global_setting_detail_view.android_link}}" class="link"><i class="fa fa-android" aria-hidden="true"></i></a></li>
+	</ul>
+
+	
+	<span class="login-btn"  ng-click="ask_user_type()" ng-show="login_button_show">Login</span>
+
+		<div class="popup" ng-show="ask_user_type_show">	
+	<div class="ask-user-type" >
+		<span class="close-me"  ng-click="ask_user_type()"><i class="fa fa-close"></i></span>
+		<h3 class="heading">Choose your user type</h3>
+		<ul class="cat-buttons">
+			<li class="list"><a href="#/user_login" class="link user">User</a></li>
+			<li class="list"><a href="#/cook_login"  class="link cook">Cook</a></li>
+		</ul>
+		<span class="slang"><img src="public/images/slang.png"></span>
+	</div>
+</div>
+
+
+
+	<span class="login-btn"  ng-click="logout_for_user_cook()" ng-show="logout_button_show">Log Out</span>
+</div>
+
+<span class="menu-btn" ng-show="menu_bars_show"><i class="fa fa-bars" aria-hidden="true"></i></span>
+
+
+</div>

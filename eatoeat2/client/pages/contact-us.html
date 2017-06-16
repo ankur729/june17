@@ -1,0 +1,76 @@
+<div class="header common-header" ng-controller="user_register">
+	<div class="container">
+		<a href="#/listing" class="logo"><img src="public/images/logo.png"></a>
+	
+		<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+	</div>
+
+<div ng-include="'pages/inc/breadcrumbs.html'" class="bread_ui ng-scope"><div class="container ng-scope" ng-init="loc_val_cookies()">
+	<ul class="breadcrumbs">
+		<li class="list"><a href="#0" class="link">Home</a></li>
+		<!--<li class="list"><a href="#/listing" class="link">Listing</a></li>-->
+		<li class="list ng-binding"></li>
+		
+	</ul>
+</div></div>
+
+</div>
+
+
+		
+
+
+
+	<div class="container info-page" >
+		<div class="inner-body">
+		<div class="top-details">
+			<h1 class="page-name">Welcome to help center of Eato Eato</h1>
+			<p class="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+		</div>
+
+		<div ng-bind-html="toTrustedHTML(footer_page.info_desc)" class="content-part">
+			<p class="text"></p>
+		</div>
+
+
+		<div class="contact-us">
+
+				<div class="left-panel">
+					<ul class="contact-text">
+						<span class="office-address">eato eato</span>
+						<li class="address">
+						3rd Floor, 3 Veer Savarkar Block,
+						Vikas Marg, Shakarpur,
+						New Delhi- 110092
+						</li>
+						<li class="mail">admin@eato.com</li>
+						<li class="phone">+91 - 9999 999 999</li>
+						<li class="phone">+91 - 9999 999 999</li>
+					</ul>
+				</div>
+				
+				<div class="contact-form">
+					<form action="http://localhost/eato/contact_us" id="contact" method="post" accept-charset="utf-8">
+					<h2 class="form-name">Enquiry Now</h2>
+					<p class="caption">It is a long established fact that a reader will be distracted by the readable content of a page when Looking at its layout.</p>
+					
+					<div class="input-fields">
+						<div class="input-div"><input name="name" class="input-box email" placeholder="Name" type="text"></div>
+						<div class="input-div"><input name="email" class="input-box email" placeholder="Your Email" type="text"></div>
+						<div class="input-div"><input name="subject" class="input-box email" placeholder="Subject" type="text"></div>
+						<div class="input-div"><textarea class="input-box email" placeholder="Message" name="message"></textarea></div>
+					</div>
+					
+					<div class="input-div">
+						<div class="submit center" type="submit" onclick="submit()">Submit Query</div>
+					</div>
+					</form>	
+				</div>
+						</div>
+
+		</div>
+	</div>
+	
+	
+
+<div ng-include="'pages/inc/footer.html'" ></div>

@@ -1,0 +1,219 @@
+
+<!-- main container start herer -->
+<div class="main-container dashboard" ng-controller="admin_controller">
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel" ng-init="fetch_associated_cooks()">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Cooks Info</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list">Cooks Info</li>
+					</ul>
+
+					<ul class="link-icon">
+						<li class="list"><a href="#/admin/add-seller" class="blue-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+						<li class="list"><div class="white-btn" ng-click="loadCooks()" style="cursor: pointer"><i class="fa fa-refresh" aria-hidden="true"></i></div></li>
+						<li class="list"><div class="red-btn" ng-click="cook_delete() "  style="cursor: pointer"><i class="fa fa-trash-o" aria-hidden="true"></i></div></li>
+					</ul>
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view" >
+					<h3 class="head-name">
+						<i class="fa fa-list-alt icon-name" aria-hidden="true"></i>
+						Associated Cooks Info
+						<div class="right col-px-200">
+								<select class="select-option">
+								<option>Status</option>
+								<option>Active</option>
+								<option>In-Active</option>
+							</select>
+						</div>
+					</h3>
+
+					<div class="search-model" >
+					
+						<div class="search-div">
+							<label class="search-name">Cook Name</label>
+							<input type="text" name="" class="input-box" placeholder="Cook Name" ng-model="fcook.name">
+						</div>
+						<div class="search-div">
+							<label class="search-name">E-mail</label>
+							<input type="text" name="" class="input-box" placeholder="E-mail"  ng-model="fcook.email">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Phone</label>
+							<input type="text" name="" class="input-box" placeholder="Phone"  ng-model="fcook.phone">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Delivery Boy</label>
+							<input type="text" name="" class="input-box" placeholder="Delivery Boy">
+						</div>
+						<div class="search-div">
+							<label class="search-name">Status</label>
+							<select class="select-option left" ng-model="fcook.status">
+								<option value="">--Select--</option>
+									<option>Active</option>
+								<option>In-Active</option>
+							</select>
+						</div>
+						
+					</div>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div col-px-50 center">
+								<input type="checkbox" name="" class="check-all-btn" ng-model="hasAllCookChecked" ng-click="checkAll()" >
+							</div>
+						
+							<div class="coloum-div">
+								<span class="title">Cook Name</span>
+							</div>
+							<div class="coloum-div col-md-20">
+								<span class="title">Email / Phone</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Assigned Delivery Boy</span>
+							</div>
+							<!-- 
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Seller Group</span>
+							</div> -->
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Commission</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Joining Date</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Status</span>
+							</div>
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Total Orders</span>
+							</div>
+							<div class="coloum-div center col-px-75">
+								<span class="title">Action</span>
+							</div>
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group" >
+						<li class="list" dir-paginate="cooks in view_associated_cooks | filter:{ cook_name:fcook.name }  | filter:{ cook_email:fcook.email } | filter:{ cook_contact:fcook.phone }  | filter:fcook.approved   |filter:fcook.status 	 | itemsPerPage: 10" >
+							<div class="coloum-div col-px-50 center">
+								<input type="checkbox" name="" class="check-btn"  ng-checked="selection.indexOf(cooks) > -1"
+							 ng-click="toggleSelection(cooks._id)" ng-model="cooks.selected">
+							</div>
+						
+							<div class="coloum-div">
+								<span class="title">{{cooks.cook_data[0].cook_name}}</span>
+							</div>
+							<div class="coloum-div col-md-20">
+								<span class="title">
+									<p><i class="fa fa-envelope-o col-px-20" aria-hidden="true"></i>{{cooks.cook_data[0].cook_email}}</p>
+									<p><i class="fa fa-phone col-px-20"></i>{{cooks.cook_data[0].cook_contact}}</p>
+								</span>
+							</div>
+
+							<div class="coloum-div col-px-150 center">
+								<span class="title margin-bottom-10px row">Delivery Boy Name</span>
+								<!--<a class="visit-button delivery-popup-btn" ng-click="del_booy_popup()">Update</a>-->
+							</div>
+							<!-- 
+							<div class="coloum-div col-md-10 center">
+								<span class="title">Default</span>
+							</div> -->
+							<div class="coloum-div col-md-10 center">
+								<span class="title">{{cooks.cook_data[0].cook_commission}}</span>
+							</div>
+
+							<div class="coloum-div col-md-10 center">
+								<span class="title">{{cooks.cook_data[0].joined_on}}</span>
+							</div>
+
+
+							
+							<div class="coloum-div col-md-10 center">
+								<span class="title ">{{cooks.cook_data[0].status}}</span>
+							</div>
+							<div class="coloum-div center  col-md-10">
+								<a href="#admin/complete-order" class="visit-button" ng-click="update_cook_details_temp(cooks.cook_data[0]._id)">Order</a>
+							</div>
+							<div class="coloum-div center  col-px-75">
+								<a href="#/admin/edit-cook" class="blue-btn" ng-click="update_cook_details_temp(cooks._id)"><i class="fa fa-edit" aria-hidden="true"></i></a>
+							</div>
+						</li>
+	
+					</ul>
+
+					<div class="delivery-boy-popup">
+						<div class="box-model">
+							<div class="layout-details">
+								<h4 class="title">Assign Delivery Boy</h4>
+								<span class="close-btn" title="Close Popup"><img src="public/images/icon/close-1.png"></span>
+							</div>
+							<div class="display-setting">
+								<select class="select-option">
+									<option>Select delivery Boy</option>
+									<option>Boy Name 1</option>
+									<option>Boy Name 2</option>
+									<option>Boy Name 3</option>
+									<option>Boy Name 4</option>
+								</select>
+
+								<ul class="add-well">
+									<li class="list" data-value="4">
+										<a href="#0" class="link">Boy Name 1</a>
+										<i class="fa fa-minus-circle move"></i>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+
+					   <div class="other-controller">
+         
+          <div class="text-center">
+          <dir-pagination-controls boundary-links="true"  template-url="public/js/dirPagination.tpl.html"></dir-pagination-controls>
+          </div>
+        </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	$(".delivery-popup-btn").click(function(){
+		$(".delivery-boy-popup").show();
+	});
+
+	$(".close-btn").click(function(){
+		$(".delivery-boy-popup").hide();
+	});	
+
+	$(".move").click(function(){
+		$(this).parent(".list").remove();
+	});
+
+</script>
+<!-- main container end herer -->

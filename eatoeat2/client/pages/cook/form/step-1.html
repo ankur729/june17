@@ -1,0 +1,44 @@
+<div class="common-header">
+
+	<div class="header" ng-controller="right_menu_controller">
+		<div class="container">
+			<a href="#/listing" class="logo"><img src="public/images/logo.png"></a>
+			<div ng-init="login_check_for_hide_search_cook()">
+				<!--<div ng-include="'pages/search/generic-search.html'" ng-if="isCookLogin_forSearchHide" ></div>-->
+
+			</div>
+
+
+
+			<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+		</div>
+
+		<div class="bread_ui">
+
+			<div class="container" >
+				<ul class="breadcrumbs">
+					<li class="list"> Complete Cook Profile</li>
+					<!--<li class="list"><a href="#/listing" class="link">Listing</a></li>-->
+					<li class="list">{{loc_show}}</li>
+
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div class="container cook-profile-page">
+	<div class="w-shadow row">
+		<h3 class="page-title">Complete your cook profile</h3>
+		<div class="step-bar">
+			<div ng-include="'pages/cook/form/steps-link.html'" class="col-md-60"></div>
+		</div>
+
+		<div class="col-md-60">
+			<div ng-include="'pages/cook/form/basic-information.html'" class="form-sytling w-shadow"></div>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'pages/inc/footer.html'"></div>

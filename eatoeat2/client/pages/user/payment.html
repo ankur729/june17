@@ -1,0 +1,16 @@
+<!--THIS IS PAYMENT GATEWAY-->
+
+<form method="post" id="payu-payment-form" action="https://test.payu.in/_payment">
+    <input type="hidden" name="hash" value="hash"/>
+    <input type="hidden" name="key" value="4825049"/>
+    <input type="hidden" name="txnid" value="asc123"/>
+    <input type="hidden" name="amount" value="1000" />
+    <input type="hidden" name="productinfo" value="Product 1"/>
+    <input type="hidden" name="firstname" value="Amit" />
+    <input type="hidden" name="email" value="abc@gmail.com" />
+    <input type="hidden" name="phone" value="123423233" />
+    <input type="hidden" name="surl" value="http://localhost/success"/>
+    <input type="hidden" name="furl" value="http://localhost/fail"/>
+    <input type="hidden" name="service_provider" value="payu_paisa" />
+    <button class="" type="submit" formtarget="_blank" >Buy</button>
+</form>
